@@ -1,0 +1,19 @@
+<div class="h-100 p-5 rounded-3" th:fragment="propertyCard"
+    th:classappend="${property.isRent() ? 'text-bg-secondary' : 'text-bg-dark'}">
+    <small th:text="${property.constructionDate}" class="m-0 p-0"></small>
+    <h3 th:text="${property.propertyName}"></h3>
+    <div class="d-flex">
+        <p th:text="${property.houseNumber}" class="m-0 p-0"></p>
+        <p class="m-0 p-0">,&nbsp;</p>
+        <p th:text="${property.street}" class="m-0 p-0"></p>
+    </div>
+
+    <div class="d-flex m-0 p-0">
+        <p th:text="${property.city}" class="m-0 p-0"></p>
+        <p class="m-0 p-0">,&nbsp;</p>
+        <p th:text="${property.state}" class="m-0 p-0"></p>
+    </div>
+
+    <p th:text="${property.zipCode}" class="m-0 p-0 mb-4"></p>
+    <a class="btn btn-outline-light" th:href="@{'/properties/' + ${property.propertyId}}">Details</a>
+</div>

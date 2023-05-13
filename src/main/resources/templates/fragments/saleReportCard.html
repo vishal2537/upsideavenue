@@ -1,0 +1,25 @@
+<div class="p-4 mb-4 border rounded-3 d-flex justify-content-around align-items-center card-hover"
+    th:fragment="saleReportCard">
+    <small th:text="${report.saleDate}" class="m-0 p-0 text-muted fw-bold col-md-2 col-lg-1"
+        style="font-size: smaller;"></small>
+    <h6 class="fw-bold my-1 col-md-2 col-lg-5 ps-lg-4" th:text="${report.property.propertyName}">
+        Property Name
+    </h6>
+
+    <h6 class="my-1 col-md-2 col-lg-2" th:text="${report.seller}">
+        Seller
+    </h6>
+
+    <h6 class="my-1 col-md-2 col-lg-2" th:text="${report.buyer}">
+        Buyer
+    </h6>
+
+    <h6 class="my-1 col-md-2 col-lg-1" th:text="${report.mode}">
+        Mode
+    </h6>
+
+    <h6 class="my-1 col-md-2 col-lg-1" th:text="'&nbsp;&#36; ' + ${report.price}">
+        Price
+    </h6>
+
+</div>

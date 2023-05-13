@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Dashboard')}">
+</head>
+
+<body>
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+    <div class="container d-none d-md-block">
+        <div class="p-5 mb-4 bg-light border rounded-3">
+            <div class="container-fluid py-5">
+                <h5 class="display-6 fw-bold">Welcome <span sec:authentication="name">Username</span>!</h5>
+                <p class="col-md-8 d-none d-lg-block">
+                    Using a series of utilities, you can create this jumbotron, just like the one in previous versions
+                    of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+
+</body>
+
+</html>

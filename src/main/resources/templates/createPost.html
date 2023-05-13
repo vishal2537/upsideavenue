@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Create Post')}">
+</head>
+
+<body>
+
+  <nav th:replace="~{fragments/header :: nav}"></nav>
+
+  <div class="card card-body cardDim p-5">
+    <form class="row g-3" th:action="@{/posts/create}" method="post" th:object="${post}">
+
+      <h3>Create Post</h3>
+      <hr>
+
+      <div class="d-flex col-lg-4 form-group-margin-sm">
+        <div class="mx-2">For </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" th:field="*{mode}" th:value="RENT" checked>
+          <label class="form-check-label">Rent</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" th:field="*{mode}" th:value="SALE">
+          <label class="form-check-label">Sale</label>
+        </div>
+      </div>
+
+      <div class="col-lg-8 my-2">
+        <!-- <label class="form-label">Property Name</label> -->
+        <div th:if="${ not#lists.isEmpty(properties)}">
+          <select th:field="*{propertyId}" class="form-select">
+            <div th:each="property: ${properties}">
+              <option th:text="${property.propertyName}" th:value="${property.propertyId}">Property Name</option>
+            </div>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-6 my-2">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" th:field="*{Price}" placeholder="1000000" required>
+      </div>
+
+      <div class="col-lg-6 my-2">
+        <label class="form-label">Agent</label>
+        <div th:if="${ not#lists.isEmpty(agents)}">
+          <select th:field="*{agentId}" class="form-select">
+            <div th:each="agent: ${agents}">
+              <option th:text="${agent.accountname}" th:value="${agent.username}">Agent</option>
+            </div>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label>Description</label>
+        <textarea class="form-control" rows="5" th:field="*{description}" maxlength="255" draggable="true"
+          placeholder="A seaside facing villa is a type of residential property that is located near or along the coast with a direct view of the sea. It is usually a spacious and luxurious house that provides a panoramic view of the ocean and easy access to the beach. Such villas often come with multiple bedrooms, a private swimming pool, outdoor entertainment areas, and other amenities to enhance the coastal living experience."></textarea>
+      </div>
+
+      <div class="col-12 d-flex justify-content-end mb-4 mt-6">
+        <button type=" submit" class="btn btn-dark btn-lg">Create</button>
+      </div>
+
+    </form>
+  </div>
+
+  <footer th:replace=" ~{fragments/footer :: footer}">
+  </footer>
+
+</body>
+
+
+</html>

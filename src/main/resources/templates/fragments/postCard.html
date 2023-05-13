@@ -1,0 +1,60 @@
+<div class="h-100 border rounded-3" th:classappend="${post.isRent() ? '' : 'text-bg-light'}" th:fragment="postCard">
+    <img th:src="@{${'/image/display/' + post.propertyId.getPhotos().get(0).photoId}}" alt=""
+        th:if="${ not#lists.isEmpty(post.propertyId.photos)}" style="width: 100%; height: 300px; object-fit: cover;">
+
+    <div class="p-5">
+        <h4 th:text="${post.propertyId.propertyName}" class="mb-0"></h4>
+        <div class="d-flex mb-1">
+            <p th:text="'&nbsp;&#36;' + ${post.price}" class="m-0 p-0 fw-bold"></p>
+        </div>
+
+        <div class="d-flex">
+            <small th:text="${post.propertyId.houseNumber}" class="m-0 p-0"></small>
+            <small class="m-0 p-0">,&nbsp;</small>
+            <small th:text="${post.propertyId.street}" class="m-0 p-0"></small>
+        </div>
+
+        <div class="d-flex m-0 p-0">
+            <small th:text="${post.propertyId.city}" class="m-0 p-0"></small>
+            <small class="m-0 p-0">,&nbsp;</small>
+            <small th:text="${post.propertyId.state}" class="m-0 p-0"></small>
+        </div>
+
+        <small th:text="${post.propertyId.zipCode}" class="m-0 p-0 mb-4"></small>
+
+        <div class="mb-2 mt-3">
+            <p th:text="${post.mode}" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-danger fw-bold">
+                Mode
+            </p>
+            <p th:text="${post.propertyId.constructionDate}" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-primary fw-bold">
+                Date
+            </p>
+            <p th:text="${post.propertyId.propertySize} + ' sq ft.'" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-dark fw-bold">
+                Size
+            </p>
+            <p th:text="${post.propertyId.propertyType}" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-dark fw-bold">
+                Property Type
+            </p>
+            <p th:text="${post.propertyId.bedrooms} + ' BHK'" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-dark fw-bold">
+                BHK
+            </p>
+            <p th:text="${post.propertyId.furnished}" style="font-size: 10px; padding: 6px 10px;"
+                class="my-0 badge rounded-pill text-bg-dark fw-bold">
+                Furnished
+            </p>
+        </div>
+
+        <p th:text="${post.agentId.accountname}" class="m-0 p-0 mb-4 fw-bold"></p>
+
+        <p th:text="${post.description}" class="m-0 p-0 mb-4"></p>
+
+        <a class="btn btn-outline-dark" th:href="@{'/posts/' + ${post.postId}}" sec:authorize="hasAuthority('USER')">
+            Details
+        </a>
+    </div>
+</div>

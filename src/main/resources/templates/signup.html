@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/auth-style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <form th:action="@{/signup}" method="post" class="loginForm" th:object="${user}">
+            <div class="form-icon">
+                <span><b>Register!</b></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" th:field="*{username}" placeholder="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control item" th:field="*{password}" placeholder="Password">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control item" th:field="*{accountname}" placeholder="Name">
+            </div>
+            
+            <div class="form-group">
+                <span class="far fa-user"></span>
+                <input type="text" class="form-control item" th:field="*{email}" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" th:field="*{phone}" placeholder="PhoneNo">
+            </div>
+            <div class="form-group">
+                <select class="form-select" th:field="*{role}">
+                  <option value="AGENT">Agent</option>
+                  <option value="USER">User</option>
+                </select>
+              </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark create-account">Create Account</button>
+            </div>
+            <div class="form-group">
+                <p class="text-center">Already have an account? <a th:href="@{/login}" id="signup">Login</a></p>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

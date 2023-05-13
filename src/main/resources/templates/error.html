@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Error')}">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center full-height">
+            <h1 class="display-1 fw-bold">Oops!</h1>
+            <h3 th:text="${error}"></h3>
+            <a class="btn btn-dark mx-1" th:href="@{/}" sec:authorize="!isAuthenticated()">Go to Home</a>
+            <a class=" btn btn-dark mx-1" th:href="@{/dashboard}" sec:authorize="isAuthenticated()">Go to Home</a>
+        </div>
+    </div>
+
+
+    <!-- <footer th:replace=" ~{fragments/footer :: footer}">
+                </footer> -->
+
+
+</body>
+
+</html>

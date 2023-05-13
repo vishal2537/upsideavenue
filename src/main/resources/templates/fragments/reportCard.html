@@ -1,0 +1,22 @@
+<a class="p-4 mb-4 text-decoration-none text-dark border rounded-3 d-flex justify-content-around align-items-center card-hover"
+    th:fragment="reportCard" th:href="@{'/reports/' + ${report.username}}">
+    <h6 class="text-muted my-1 col-md-2" th:text="${report.username}">
+        Username
+    </h6>
+
+    <h6 class="fw-bold my-1 col-md-4 ps-lg-4" th:text="${report.accountname}">
+        Agent Name
+    </h6>
+
+    <h6 class="my-1 col-md-2 col-lg-2" th:text="${report.transactions}">
+        Transactions
+    </h6>
+
+    <h6 class="my-1 col-md-2" th:text="'&nbsp;&#36; ' + ${report.avgSales}">
+        Avg Sales
+    </h6>
+
+    <h6 class="my-1 col-md-2 d-none d-lg-block" th:text="${report.duration}">
+        Duration
+    </h6>
+</a>

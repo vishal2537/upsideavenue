@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Property Details')}">
+</head>
+
+<body>
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+    <div class="container">
+        <div class="p-5 mb-4 bg-light border rounded-3">
+            <div class="container-fluid py-5 row">
+                <h5 class="display-6 fw-bold col-md-8 col-sm-12 col-lg-10">Property Details</h5>
+                <!-- <p class="col-md-8 d-none d-lg-block">
+                    Using a series of utilities, you can create this jumbotron, just like the one in previous versions
+                    of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
+                </p> -->
+                <!-- <a class="btn btn-primary col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center align-items-center"
+                    th:href="@{/properties/add}">
+                    Add
+                </a> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="h-100 p-5 text-bg-dark rounded-3">
+            <h3 th:text="${property.propertyName}"></h3>
+            <div class="d-flex">
+                <p th:text="${property.houseNumber}" class="m-0 p-0"></p>
+                <p class="m-0 p-0">,&nbsp;</p>
+                <p th:text="${property.street}" class="m-0 p-0"></p>
+            </div>
+
+            <div class="d-flex m-0 p-0">
+                <p th:text="${property.city}" class="m-0 p-0"></p>
+                <p class="m-0 p-0">,&nbsp;</p>
+                <p th:text="${property.state}" class="m-0 p-0"></p>
+            </div>
+
+            <p th:text="${property.zipCode}" class="m-0 p-0 mb-4"></p>
+        </div>
+    </div>
+
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+
+</body>
+
+</html>

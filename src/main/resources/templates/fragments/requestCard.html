@@ -1,0 +1,60 @@
+<div class="p-4 mb-4 border rounded-3 d-sm-flex justify-content-between align-items-center" th:fragment="requestCard">
+    <div class="col-md-8 mb-0">
+        <small th:text="${request.requestDate}" class="m-0 p-0 text-muted" style="font-size: smaller;"></small>
+        <h6 class="fw-bold mb-2" th:text="${request.post.propertyId.propertyName}">
+            Requested Property
+        </h6>
+        <div class="d-flex">
+            <small th:text="${request.post.propertyId.houseNumber}" class="m-0 p-0"></small>
+            <small class="m-0 p-0">,&nbsp;</small>
+            <small th:text="${request.post.propertyId.street}" class="m-0 p-0"></small>
+        </div>
+
+        <div class="d-flex my-0 py-0">
+            <small th:text="${request.post.propertyId.city}" class="m-0 p-0"></small>
+            <small class="m-0 p-0">,&nbsp;</small>
+            <small th:text="${request.post.propertyId.state}" class="m-0 p-0"></small>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-4 mt-sm-0 row">
+        <div class="col-lg-6 mb-2 mb-lg-0">
+            <a class="btn btn-outline-dark btn-large w-100 d-flex justify-content-center align-items-center"
+                th:href="@{'/posts/' + ${request.post.postId}}" sec:authorize="hasAuthority('USER')">
+                Details
+            </a>
+        </div>
+        <form th:action="@{'/myrequest/cancel/' + ${request.post.postId}}" method="post" class="col-lg-6"
+            sec:authorize="hasAuthority('USER')">
+            <button type="submit" class="btn btn-outline-danger btn-large w-100">
+                Cancel
+            </button>
+        </form>
+
+        <div class="row" sec:authorize="hasAuthority('AGENT')">
+
+            <form th:action="@{'/requests/sell/' + ${request.requestId}}" method="post" class="col-lg-6 mb-2 mb-lg-0"
+                th:if="${ !request.post.isRent() }">
+                <button type="submit" class="btn btn-outline-success btn-large w-100">
+                    Sell
+                </button>
+            </form>
+
+            <form th:action="@{'/requests/rent/' + ${request.requestId}}" method="post" class="col-lg-6 mb-2 mb-lg-0"
+                th:if="${ request.post.isRent() }">
+                <button type="submit" class="btn btn-outline-success btn-large w-100">
+                    Rent
+                </button>
+            </form>
+
+            <form th:action="@{'/requests/cancel/' + ${request.requestId}}" method="post" class="col-lg-6">
+                <button type="submit" class="btn btn-outline-danger btn-large w-100">
+                    Cancel
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
