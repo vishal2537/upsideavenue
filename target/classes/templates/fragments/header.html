@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4" th:fragment="nav">
+    <div class="container">
+        <a class="navbar-brand brand" th:href="@{/dashboard}">UpsideAvenue</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item menu-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+
+                <li class="nav-item menu-item">
+                    <a class="nav-link" aria-current="page" th:href="@{/dashboard}">Dashboard</a>
+                </li>
+
+                <li class="nav-item menu-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:href="@{/reports}">Reports</a>
+                </li>
+
+                <li class="nav-item dropdown" sec:authorize="hasAuthority('USER')">
+                    <a class=" nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Property
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/properties}">My Properties</a></li>
+                        <li><a class="dropdown-item" th:href="@{/posts}">My Posts</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" th:href="@{/purchase}">Purchase</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item menu-item" sec:authorize="hasAuthority('AGENT')">
+                    <a class="nav-link" th:href="@{/myposts}">Posts</a>
+                </li>
+
+                <li class="nav-item menu-item" sec:authorize="hasAuthority('USER')">
+                    <a class="nav-link" th:href="@{/myrequests}">Requests</a>
+                </li>
+
+                <li class="nav-item menu-item" sec:authorize="hasAuthority('AGENT')">
+                    <a class="nav-link" th:href="@{/requests}">Requests</a>
+                </li>
+
+                <li class="nav-item menu-item">
+                    <a class="nav-link" th:href="@{/logout}">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Requests')}">
+</head>
+
+<body>
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+    <div class="container">
+        <div class="p-5 mb-4 text-bg-light border rounded-3">
+            <div class="container-fluid py-5 row">
+                <h5 class="display-6 fw-bold" th:if="${ title == null }">Requests</h5>
+                <h5 class="display-6 fw-bold" th:if="${ title }" th:text="${title}">Requests</h5>
+                <!-- <p class="col-md-8 d-none d-lg-block">
+                    Using a series of utilities, you can create this jumbotron, just like the one in previous versions
+                    of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
+                </p> -->
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${ not#lists.isEmpty(requests)}" class="container">
+
+        <div th:each="request: ${requests}">
+            <div th:replace="~{fragments/requestCard :: requestCard(request=${request})}">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" th:if="${ #lists.isEmpty(requests)}">
+        <div class="p-4 mb-4 border rounded-3 text-center text-bg-dark w-100" sec:authorize="hasAuthority('USER')">
+            <h6 class="fw-bold mb-0">
+                You have no pending requests.
+            </h6>
+        </div>
+
+        <div th:if="${ title }" class="p-4 mb-4 border rounded-3 text-center text-bg-dark w-100"
+            sec:authorize="hasAuthority('AGENT')">
+            <h6 class="fw-bold mb-0">
+                There are no requests for this property.
+            </h6>
+        </div>
+
+    </div>
+
+    <div th:if="${ not#lists.isEmpty(posts)}" class="container" sec:authorize="hasAuthority('AGENT')">
+
+        <div th:each="post: ${posts}">
+            <a class="p-4 mb-4 border rounded-3 btn btn-outline-dark w-100 text-start d-flex justify-content-between align-items-center"
+                th:href="@{'/requests/' + ${post.postId}}">
+                <h6 class="fw-bold mb-0" th:text="${post.propertyId.propertyName}">
+                    Property
+                </h6>
+                <div>
+                    <h6 class="mb-0 badge rounded-pill text-bg-dark" th:text="${post.mode}">
+                        Mode
+                    </h6>
+                    <h6 class="mb-0 badge rounded-pill text-bg-danger" th:text="${post.requests.size()}">
+                        Requests
+                    </h6>
+                </div>
+            </a>
+        </div>
+
+        <div th:if="${ #lists.isEmpty(posts)}" class="p-4 mb-4 border rounded-3 text-center text-bg-dark w-100">
+            <h6 class="fw-bold mb-0">
+                There are no properties assigned to you.
+            </h6>
+        </div>
+
+    </div>
+
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+
+</body>
+
+</html>

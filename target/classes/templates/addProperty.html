@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Add Property')}">
+</head>
+
+<body>
+
+  <nav th:replace="~{fragments/header :: nav}"></nav>
+
+  <div class="card card-body cardDim p-5">
+    <form class="row g-3" th:action="@{/properties/add}" method="post" th:object="${property}"
+      enctype="multipart/form-data">
+      <h3>Property Details</h3>
+      <hr>
+
+      <div class="col-md-6 col-lg-3 form-group-margin-sm">
+        <label class="form-label">Construction</label>
+        <input type="date" name="constDate" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 col-lg-3 form-group-margin-sm">
+        <label class="form-label">Type</label>
+        <select th:field="*{propertyType}" class="form-select" aria-placeholder="Property-Type" required>
+          <option value="HOUSE">House</option>
+          <option value="APARTMENT">Apartment</option>
+        </select>
+      </div>
+
+      <div class="col-lg-6 my-3">
+        <label class="form-label">Property Name</label>
+        <input type="text" class="form-control" th:field="*{propertyName}" required>
+      </div>
+      <div class="col-lg-4 my-2">
+        <label class="form-label">House Number</label>
+        <input type="text" class="form-control" th:field="*{houseNumber}">
+      </div>
+
+      <div class="col-lg-8 my-2">
+        <label class="form-label">Street</label>
+        <input type="text" class="form-control" th:field="*{street}" placeholder="1234 Main St" required>
+      </div>
+
+      <div class="col-lg-4 my-2">
+        <label class="form-label">City</label>
+        <input type="text" class="form-control" th:field="*{city}" required>
+      </div>
+      <div class="col-lg-5 my-2">
+        <label class="form-label">State</label>
+        <input type="text" class="form-control" th:field="*{state}" required>
+      </div>
+      <div class="col-lg-3  my-2">
+        <label class="form-label">Zip</label>
+        <input type="text" class="form-control" th:field="*{zipCode}" required>
+      </div>
+      <h3> Features</h3>
+      <hr>
+      <div class="col-lg-4 my-2">
+        <label class="form-label">Area</label>
+        <input type="text" class="form-control" th:field="*{propertySize}" placeholder="800 sq ft." required>
+      </div>
+      <div class="col-lg-4 my-2">
+        <label class="form-label">Furnished Status</label>
+        <select th:field="*{furnished}" class="form-select">
+          <option selected value="FURNISHED">Furnished</option>
+          <option value="UNFURNISHED">Unfurnished</option>
+          <option value="SEMIFURNISHED"> Semifurnished</option>
+        </select>
+      </div>
+      <div class="col-lg-4 my-2">
+        <label class="form-label">Bedrooms</label>
+        <input type="text" class="form-control" th:field="*{bedrooms}" placeholder="2" required>
+      </div>
+      <br>
+
+      <div class="mb-3">
+        <label class="form-label">Add Photos</label>
+        <input class="form-control" type="file" name="images" accept="image/png, image/jpeg" multiple>
+      </div>
+
+      <div class="col-12 d-flex justify-content-end mb-2 mt-4">
+        <button type=" submit" class="btn btn-dark btn-lg">Add</button>
+      </div>
+
+    </form>
+  </div>
+
+  <footer th:replace=" ~{fragments/footer :: footer}">
+  </footer>
+
+</body>
+
+
+</html>

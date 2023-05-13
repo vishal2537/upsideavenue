@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Sales Report')}">
+
+</head>
+
+<body>
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+
+
+    <div class="container">
+        <div class="p-5 mb-4 bg-light border rounded-3">
+            <div class="container-fluid py-5 row">
+                <h5 class="display-6 fw-bold col-md-8 col-sm-12 col-lg-10">
+                    <span th:text="${agent}">Username</span>'s Report
+                </h5>
+
+            </div>
+        </div>
+    </div>
+
+    <div div th:if="${ not#lists.isEmpty(reports)}" class="container table-responsive">
+        <div class="p-4 mb-4 border text-bg-dark rounded-3 d-sm-flex justify-content-around align-items-center d-none d-sm-block"
+            th:fragment="saleReportCard">
+            <small class="m-0 p-0 fw-bold col-md-2 col-lg-1" style="font-size: smaller;"> Sale Date</small>
+            <h6 class="fw-bold my-1 col-md-2 col-lg-5 ps-lg-4">
+                Property Name
+            </h6>
+
+            <h6 class="my-1 col-md-2 col-lg-2 fw-bold">
+                Seller
+            </h6>
+
+            <h6 class="my-1 col-md-2 col-lg-2 fw-bold">
+                Buyer
+            </h6>
+
+            <h6 class="my-1 col-md-2 col-lg-1 fw-bold">
+                Mode
+            </h6>
+
+            <h6 class="my-1 col-md-2 col-lg-1 fw-bold">
+                Price
+            </h6>
+        </div>
+        <div th:each="report: ${reports}">
+            <div th:replace="~{fragments/saleReportCard :: saleReportCard(report=${report})}">
+            </div>
+        </div>
+    </div>
+
+
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+</body>
+
+
+</html>

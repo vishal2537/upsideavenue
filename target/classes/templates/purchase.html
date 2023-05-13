@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='Purchase')}">
+</head>
+
+<body>
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+    <div class="container">
+        <div class="p-5 mb-4 text-bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <h5 class="display-6 fw-bold col-md-6 col-sm-12 col-lg-8">Purchase</h5>
+                    <div class="dropdown col-sm-12 col-md-6 col-lg-4 mt-sm-3">
+                        <button type="button" class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown">
+                            Filter
+                            <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <form method="post" th:action="@{/purchase}" th:object="${search}" class="m-3">
+
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" th:field="*{city}" placeholder="City">
+
+                                <label class="form-label mt-3">State</label>
+                                <input type="text" class="form-control" th:field="*{state}" placeholder="State">
+
+                                <label class="form-label mt-3">Area</label>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{minSize}"
+                                            placeholder="Min">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{maxSize}"
+                                            placeholder="Max">
+                                    </div>
+                                </div>
+
+                                <label class="form-label mt-3">Type</label>
+                                <select th:field="*{mode}" class="form-select">
+                                    <option th:text="Any" th:value="${null}">All</option>
+                                    <option th:text="Rent" value="RENT">Mode1</option>
+                                    <option th:text="Sale" value="SALE">Mode2</option>
+                                </select>
+
+                                <label class="form-label mt-3">Budget</label>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{minPrice}"
+                                            placeholder="Min">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{maxPrice}"
+                                            placeholder="Max">
+                                    </div>
+                                </div>
+
+                                <label class="form-label mt-3">Furnishing</label>
+                                <select th:field="*{furnished}" class="form-select">
+                                    <option th:text="Any" th:value="${null}">All</option>
+                                    <option th:text="Furnished" value="FURNISHED">Furnishing1</option>
+                                    <option th:text="Semifurnished" value="SEMIFURNISHED">Furnishing2</option>
+                                    <option th:text="Unfurnished" value="UNFURNISHED">Furnishing3</option>
+                                </select>
+
+                                <label class="form-label mt-3">BHK</label>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{minBedrooms}"
+                                            placeholder="Min">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" min="0" class="form-control" th:field="*{maxBedrooms}"
+                                            placeholder="Max">
+                                    </div>
+                                </div>
+
+                                <label class="form-label mt-3">Construction</label>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="date" th:field="*{minDate}" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="date" th:field="*{maxDate}" class="form-control">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mt-3">
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${ not#lists.isEmpty(posts)}" class="container">
+        <div class="row">
+            <div th:each="post: ${posts}" class="col-md-6 col-lg-4 mb-4">
+                <div th:replace="~{fragments/postCard :: postCard(post=${post})}">
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace=" ~{fragments/footer :: footer}">
+        </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+* {
+  font-family: "Poppins" !important;
+}
+
+.navbar-ua {
+  height: 100px;
+}
+
+.brand {
+  /* letter-spacing: 4px; */
+  font-weight: 700;
+  font-size: 32px;
+}
+
+p.badge {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 8px 16px;
+}
+
+.menu-item {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.banner {
+  background-image: url("https://drscdn.500px.org/photo/68820179/q%3D80_m%3D2000/v2?sig=d51f55e98c0d127f20fbcc1adb908b111c3786938e5589b59c5835ad3784c506");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.banner-cover {
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+}
+
+.banner-title {
+  font-weight: 700;
+  font-size: 64px;
+}
+
+.about-content {
+  padding-top: 40px;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.about-content p.badge {
+  font-size: 12px;
+  padding: 8px 16px;
+}
+
+.about-content p {
+  font-size: 16px;
+}
+
+.about-text {
+  margin: 32px 12px;
+}
+
+.callout {
+  border-left: 4px solid #ff5a3d;
+  background: #f5dedb;
+  padding: 16px;
+  margin: 32px auto;
+}
+
+.tags {
+  margin: 2px 4px;
+}
+
+.service {
+  background: #f2f6f7;
+  padding-block: 100px;
+}
+
+.service a {
+  text-decoration: none;
+  color: #000;
+}
+
+.service h3 {
+  font-weight: 700;
+}
+
+.service-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 36px;
+}
+
+.service-card {
+  position: relative;
+  background: #fff;
+  text-align: center;
+  padding: 40px 30px;
+  box-shadow: 0 16px 32px hsla(188, 63%, 7%, 0.1);
+}
+
+.service-card .card-icon {
+  width: max-content;
+  margin-inline: auto;
+  margin-bottom: 20px;
+}
+
+.service-card .card-title {
+  margin-bottom: 15px;
+}
+
+.service .service-card .card-title>a:is(:hover, :focus) {
+  color: #ff5a3d;
+}
+
+.service-card .card-text {
+  color: #5d737e;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.service-card .card-link {
+  color: #8bb1b1;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.service-card:is(:hover, :focus) .card-link {
+  color: #ff5a3d;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #ff5a3d;
+  transition: 0.25s ease-in;
+}
+
+.service-card:is(:hover, :focus)::after {
+  width: 100%;
+}
+
+.bg-footer {
+  background: #0f0f0f;
+}
+
+.footer-secondary {
+  font-size: 12px;
+}
+
+footer h5 {
+  font-weight: 600;
+}
+
+.footer-link {
+  font-size: 12px;
+}
+
+.footer-rights {
+  height: 50px;
+  background: #191919;
+}
+
+.footer-rights p {
+  margin: 0;
+  font-size: smaller;
+}
+
+
+.cardDim {
+  border-radius: 3vh;
+  margin: 6vh 16vh;
+  padding: 12vh;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.10), 0 8px 100px 0 rgba(0, 0, 0, 0.10);
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-width {
+  width: 100vh;
+}
+
+.full {
+  height: 100vh;
+  width: 100vh;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.card-hover:hover {
+  background: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .cardDim {
+    margin: 6vh 6vh;
+    padding: 8vh;
+  }
+
+  .form-group-margin-sm {
+    margin: 4px 0;
+  }
+}

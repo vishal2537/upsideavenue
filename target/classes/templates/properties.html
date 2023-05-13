@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/imports :: imports(metaTitle='My Properties')}">
+</head>
+
+<body>
+    <nav th:replace="~{fragments/header :: nav}"></nav>
+
+    <div class="container">
+        <div class="p-5 mb-4 bg-light border rounded-3">
+            <div class="container-fluid py-5 row">
+                <h5 class="display-6 fw-bold col-md-8 col-sm-12 col-lg-10">My Properties</h5>
+                <!-- <p class="col-md-8 d-none d-lg-block">
+                    Using a series of utilities, you can create this jumbotron, just like the one in previous versions
+                    of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
+                </p> -->
+                <a class="btn btn-primary col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center align-items-center"
+                    th:href="@{/properties/add}">
+                    Add
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div th:if="${ not#lists.isEmpty(properties)}" class="container">
+        <div class="row">
+            <div th:each="rent: ${rented}" class="col-md-6 col-lg-4 mb-4" th:if="${ not#lists.isEmpty(rented)}">
+                <div th:replace="~{fragments/propertyCard :: propertyCard(property=${rent.property})}">
+                </div>
+            </div>
+            <div th:each="property: ${properties}" class="col-md-6 col-lg-4 mb-4">
+                <div th:replace="~{fragments/propertyCard :: propertyCard(property=${property})}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace=" ~{fragments/footer :: footer}">
+    </footer>
+
+
+</body>
+
+</html>
