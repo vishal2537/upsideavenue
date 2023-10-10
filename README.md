@@ -8,15 +8,10 @@ Upside Avenue does an incredible job of connecting buyers and sellers through ag
 
 ## ER Diagram
 
-<<<<<<< HEAD
-=======
-## ER Diagram
->>>>>>> e3f2f02078a8009b291699225cddad58f0818365
 ![ER](./Preview/er.png)
 
 ## Preview
 
-<<<<<<< HEAD
 ### Main
 
 ![Main](./Preview/1.png)
@@ -39,4 +34,4 @@ Upside Avenue does an incredible job of connecting buyers and sellers through ag
 
 ### MyPost
 
-=======
+![post](./Preview/myPost.png)
